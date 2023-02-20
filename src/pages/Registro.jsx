@@ -7,7 +7,9 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import alumno from '../assets/imgs/alumno.jpg';
 import Regalumno from '../components/Regalumno';
 
+
 const Registro = () => {
+    
 
 
     return (

@@ -12,12 +12,31 @@ import { useNavigate } from "react-router-dom";
 const Navbarprin = () => {
     const setActiveClass = ({ isActive }) => (isActive ? "active" : "inactive");
     const [id, setId] = useState("");
+    const [rutlogin, setRutlogin] = useState('');
     const navigate = useNavigate();
     const irARegistro = () => {
         navigate(`/registro`);
     };
     const irAHome = () => {
         navigate(`/`);
+    };
+    const irABuscapropiedades = () => {
+        navigate(`/buscapropiedad`);
+    };
+
+    const irAVistaperfilada = (e) => {
+        e.preventDefault();
+        //navigate(`/vistapropietario/${1}`);
+        console.log(rutlogin)
+        console.log('hola')
+        if (rutlogin == '1')
+        {
+            navigate(`/vistapropietario/${rutlogin}`);
+        }
+        if (rutlogin == '2')
+        {
+            navigate(`/vistaalumno/${rutlogin}`);
+        }
     };
 
     return (
@@ -32,16 +51,18 @@ const Navbarprin = () => {
                             style={{ maxHeight: '100px' }}
                             navbarScroll
                         >
-                            <Nav.Link onClick={ irARegistro } href="#action1">Alojamientos</Nav.Link>
+                            <Nav.Link onClick={ irABuscapropiedades } href="#action1">Alojamientos</Nav.Link>
                             <Nav.Link onClick={ irARegistro } href="#action2">Contactanos</Nav.Link>
                             <Nav.Link onClick={ irAHome } href="#action3">Home</Nav.Link>
                         </Nav>
                         <Form className="d-flex">
-                            <Form.Control
+                            <Form.Control 
                                 type="username"
                                 placeholder="username"
                                 className="me-2"
                                 aria-label="Username"
+                                onChange={(e) => setRutlogin(e.target.value)}
+                                value={rutlogin}
                             />
                             <Form.Control
                                 type="search"
@@ -49,7 +70,7 @@ const Navbarprin = () => {
                                 className="me-2"
                                 aria-label="Search"
                             />
-                            <Button  onClick={ irARegistro } variant="outline-success">Login</Button>
+                            <Button  onClick={ irAVistaperfilada } variant="outline-success">Login</Button>
                         </Form>
                     </Navbar.Collapse>
                 </Container>

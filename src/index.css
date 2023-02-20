@@ -32,5 +32,16 @@ code {
 .active {
   color: darkgreen;
   }
+.alinea_centro{
+  text-align: center;
+}
+.filtroderecha{
+  display: flex;
+  flex-direction: row;
+    
+}
+.filtrosubir{
+  margin-top: 0%;
+}
   
  

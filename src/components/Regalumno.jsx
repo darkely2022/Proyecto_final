@@ -1,9 +1,18 @@
-import { useState } from 'react'
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 const Regalumno = () => {
+     
+    const [idvistaalumno, setIdvistaalumno] = useState("1");
+    const navigate = useNavigate();
+    const irAVistaalumno = () => {
+        navigate(`/vistaalumno/${idvistaalumno}`);
+    };
 
     const [nombre, setNombre] = useState('');
     const [apellido, setApellido] = useState('');
     const [rut, setRut] = useState('');
+    const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
     const [comuna, setComuna] = useState('');
     //Estado para los errores
@@ -14,7 +23,8 @@ const Regalumno = () => {
     const validarDatos = (e) => {
         e.preventDefault();
         //Validación;
-        if (nombre === '' || apellido === '' || rut === '' || email === '') {
+        if (nombre === '' || apellido === '' || rut === '' || email === '' || password === '')
+        {
             setError(true);
             return;
         }
@@ -55,6 +65,16 @@ const Regalumno = () => {
                     />
                 </div>
                 <div className="form-group">
+                    <label>Password</label>
+                    <input
+                        type="text"
+                        name="password"
+                        className="form-control"
+                        onChange={(e) => setPassword(e.target.value)}
+                        value={password}
+                    />
+                </div>
+                <div className="form-group">
                     <label>Email</label>
                     <input
                         type="email"
@@ -77,7 +97,7 @@ const Regalumno = () => {
                          <option value="3">Macul</option>
                     </select>
                 </div>
-                <button type="submit" className="btn btn-primary">
+                <button onClick={ irAVistaalumno } type="submit" className="btn btn-primary">
                     Submit
                 </button>
             </form>
