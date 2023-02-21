@@ -1,56 +1,65 @@
+import Regpropiedad from '../components/propietario_comp/Regpropiedad';
+import Vistapropublicada from '../components/propietario_comp/Vistapropublicada';
+import Vistaproreservada from '../components/propietario_comp/Vistaproreservada';
+import { useState } from "react";
+import Navbarpropietario from './propietario_sub/Navbarpropietario';
+import Datospropietario from '../components/propietario_comp/Datospropietario';
 import { Container } from "react-bootstrap";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import ListGroup from 'react-bootstrap/ListGroup';
-import { useNavigate } from "react-router-dom";
-import Regpropiedad from '../components/Regpropiedad';
-import Vistapropublicada from '../components/Vistapropublicada'
 
 const Vistapropietario = () => {
-    const navigate = useNavigate();
 
-   
-    const irAPublicadas = () => {
-        navigate(`/publicadas`);
-        
-    };
-    const irPublicar = () => {
-        navigate(`/publicar`);
-    };
-    const alertClicked = () => {
-        alert('You clicked the third ListGroupItem');
-    };
+  const [internalRoute, setIntervalRoute] = useState('ingresar-propiedad');
 
-    return (
-        <>
-            <Container Fluid>
-                <Row>
-                    <Col>
-                        <ListGroup horizontal defaultActiveKey="#link1">
-                            <ListGroup.Item action href="#link1" onClick={irPublicar}>
-                                Publicar una propiedad
-                            </ListGroup.Item>
-                           
-                            <ListGroup.Item action onClick={alertClicked}>
-                                Datos Personales
-                            </ListGroup.Item>
-                            <ListGroup.Item action onClick={irAPublicadas}>
-                                Propiedades publicadas
-                            </ListGroup.Item>
-                            <ListGroup.Item action onClick={alertClicked}>
-                                Propiedades reservadas
-                            </ListGroup.Item>
-                        </ListGroup>
-                    </Col>
-                    
-                </Row>
-                <Row>
-                    <Col>
-                        <Regpropiedad></Regpropiedad>
-                    </Col>
-                </Row>
-            </Container>
-        </>
-    )
+  return (
+    <>
+      <Container fluid>
+        {/*{userContex_rol==='estudiante'
+            (<Navbarpropietario/>)
+          } */}
+        <Row>
+          <Col>
+            <Navbarpropietario setIntervalRoute={setIntervalRoute} />
+          </Col>
+        </Row>
+        {internalRoute === 'ingresar-propiedad' && (
+          <Row>
+            <Col>
+              <Regpropiedad />
+            </Col>
+          </Row>
+        )
+        }
+        {internalRoute === 'datos-propietario' && (
+          <Row>
+            <Col>
+              <Datospropietario />
+
+            </Col>
+          </Row>
+        )
+        }
+        {internalRoute === 'propiedades-publicadas' && (
+
+          <Row>
+            <Col>
+              <Vistapropublicada />
+            </Col>
+          </Row>
+        )
+        }
+        {internalRoute === 'propiedades-reservadas' && (
+
+          <Row>
+            <Col>
+              <Vistaproreservada />
+            </Col>
+          </Row>
+        )
+        }
+      </Container>
+    </>
+  )
 }
 export default Vistapropietario;

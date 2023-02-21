@@ -7,8 +7,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Buscapropiedad from './pages/Buscapropiedad';
 import Vistapropietario from './pages/Vistapropietario';
 import Vistaalumno from './pages/Vistaalumno';
-import Regpropiedad from './components/Regpropiedad';
-import Vistapropublicada from './components/Vistapropublicada';
+
+import PageLayoutpublico from './pages/PageLayoutpublico';
 
 function App() {
   return (
@@ -16,15 +16,15 @@ function App() {
      { /* Utilizamos elcomponente */ }
      <BrowserRouter>         
           <Header />
-          <Navbarprin/>
+          { /*<Navbarprin/>*/ }
           <Routes>
+            <Route path="/" element={<PageLayoutpublico/>} />
             <Route path="/" element={<Home/>} />
             <Route path="/registro" element={<Registro/>} />
             <Route path="/buscapropiedad" element={<Buscapropiedad/>} />
             <Route path="/vistapropietario/:id" element={<Vistapropietario/>} />
             <Route path="/vistaalumno/:id" element={<Vistaalumno/>} />
-            <Route path="/publicar" element={<Regpropiedad/>} />
-            <Route path="/publicadas" element={<Vistapropublicada/>} />
+           
             { /*<Route path="/pizza/:id" element={<VerPizza />} />>*/ }
              { /*<Route path="/carrito" element={<Carrito />} />>*/ }
           </Routes>
