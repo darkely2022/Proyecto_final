@@ -2,13 +2,50 @@
 import { Container } from "react-bootstrap";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { Table, Button } from 'react-bootstrap';
 
-const Vistapropublicada = () => {
+const Vistapropublicada = (onLoad) => {
+
+    const data =  JSON.parse(JSON.stringify(onLoad))
 
     return (
         <>
-         <Container fluid>
-            <h1>Propiedades publicadas</h1>
+            <Container fluid>
+                <Row>
+                    <Col>
+                        <h2>Propiedades publicadas</h2>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <Table striped bordered hover>
+                            <thead>
+                                <tr>
+                                    <th>Folio</th>
+                                    <th>Nombre</th>
+                                    <th>Dirección</th>
+                                    <th>Comuna</th>
+                                    <th>N°Habitaciones</th>
+                                    <th>Metros</th>
+                                    <th>Valor</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {data.map((dato) => (
+
+                                    <tr key={dato.nombrepropiedad}>
+                                        <td>{dato.direccionpropiedad}</td>
+                                        <td>{dato.comuna}</td>
+                                        <td>{dato.numhabitacion}</td>
+                                        <td>{dato.metrospropiedad}</td>
+                                        <td>{dato.valorpropiedad}</td>
+
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </Table>
+                    </Col>
+                </Row>
             </Container>
         </>
     )

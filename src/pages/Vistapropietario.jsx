@@ -1,16 +1,41 @@
 import Regpropiedad from '../components/propietario_comp/Regpropiedad';
+import Datospropietario from '../components/propietario_comp/Datospropietario';
 import Vistapropublicada from '../components/propietario_comp/Vistapropublicada';
 import Vistaproreservada from '../components/propietario_comp/Vistaproreservada';
 import { useState } from "react";
 import Navbarpropietario from './propietario_sub/Navbarpropietario';
-import Datospropietario from '../components/propietario_comp/Datospropietario';
+
 import { Container } from "react-bootstrap";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
+import { CrearPropiedadApi, ListarpropiedadesApi } from '../api/Apipropiedad';
+
 const Vistapropietario = () => {
 
   const [internalRoute, setIntervalRoute] = useState('ingresar-propiedad');
+  const [PropiedadesContext, setPropiedadesContext] = useState('');
+
+  const CrearPropiedad = (PropiedadporCrear) => {
+    try {
+      const propiedadCreada = CrearPropiedadApi(PropiedadporCrear)
+      setPropiedadesContext(propiedadCreada);
+      alert('Datos Grabados');
+    } catch (error) {
+      console.log(error)
+      alert('Datos no grabados, verificar completar todos los datos')
+      setPropiedadesContext(null);
+    }
+  }
+
+  const ListadoPropiedades = () => {
+    try {
+      const listaprop  = ListarpropiedadesApi();
+      alert('Datos Cargados')
+    } catch (error) {
+        alert('Error al cargar los datos')
+    }
+  }
 
   return (
     <>
@@ -26,7 +51,7 @@ const Vistapropietario = () => {
         {internalRoute === 'ingresar-propiedad' && (
           <Row>
             <Col>
-              <Regpropiedad />
+              <Regpropiedad onSubmit={CrearPropiedad} />
             </Col>
           </Row>
         )
@@ -44,7 +69,7 @@ const Vistapropietario = () => {
 
           <Row>
             <Col>
-              <Vistapropublicada />
+              <Vistapropublicada onLoad={ListadoPropiedades} />
             </Col>
           </Row>
         )
