@@ -1,14 +1,28 @@
-const mockPropiedades = [
-    {
-        nombrepropiedad: "",
-        direccionpropiedad: "",
-        comuna: 0,
-        numhabitacion: 0,
-        metrospropiedad: 0,
-        valorpropiedad: 0
+import { useState } from "react";
 
-    }
-]
+const mockPropiedades = 
+    [
+        {
+            nombrepropiedad: "Casa de campo",
+            direccionpropiedad: "Un lugar ideal para descansar de la ciudad",
+             src:
+            "https://www.construyehogar.com/wp-content/uploads/2020/02/Dise%C3%B1o-casa-en-ladera.jpg",
+            numhabitacion: 2,
+            metrospropiedad: 170,
+            valorpropiedad:0
+        },
+        {
+            nombrepropiedad: "Casa de playa",
+            direccionpropiedad: "Despierta tus días oyendo el oceano",
+          src:
+            "https://media.chvnoticias.cl/2018/12/casas-en-la-playa-en-yucatan-2712.jpg",
+            numhabitacion: 2,
+            metrospropiedad: 130,
+            valorpropiedad:0
+        }
+    ]
+//const [listaPropiedades,setlistaPropiedades]=useState(mockPropiedades) 
+
 
 export const CrearPropiedadApi = (PropiedadporCrear) => {
     /* const resp = await fetch('/propiedades');

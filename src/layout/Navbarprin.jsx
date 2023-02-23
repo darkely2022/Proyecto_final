@@ -43,7 +43,7 @@ const Navbarprin = () => {
         <>
             <Navbar bg="light" expand="lg">
                 <Container fluid>
-                    <Navbar.Brand onClick={ irARegistro } href="#">Registro</Navbar.Brand>
+                    <Navbar.Brand onClick={ irARegistro } >Registro</Navbar.Brand>
                     <Navbar.Toggle aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll">
                         <Nav
@@ -51,9 +51,9 @@ const Navbarprin = () => {
                             style={{ maxHeight: '100px' }}
                             navbarScroll
                         >
-                            <Nav.Link onClick={ irABuscapropiedades } href="#action1">Alojamientos</Nav.Link>
-                            <Nav.Link onClick={ irARegistro } href="#action2">Contactanos</Nav.Link>
-                            <Nav.Link onClick={ irAHome } href="#action3">Home</Nav.Link>
+                            <Nav.Link onClick={ irABuscapropiedades } >Alojamientos</Nav.Link>
+                            <Nav.Link onClick={ irARegistro } >Contactanos</Nav.Link>
+                            <Nav.Link onClick={ irAHome } >Home</Nav.Link>
                         </Nav>
                         <Form className="d-flex">
                             <Form.Control 

@@ -2,7 +2,7 @@ import Regpropiedad from '../components/propietario_comp/Regpropiedad';
 import Datospropietario from '../components/propietario_comp/Datospropietario';
 import Vistapropublicada from '../components/propietario_comp/Vistapropublicada';
 import Vistaproreservada from '../components/propietario_comp/Vistaproreservada';
-import { useState } from "react";
+import { useState , useEffect} from "react";
 import Navbarpropietario from './propietario_sub/Navbarpropietario';
 
 import { Container } from "react-bootstrap";
@@ -15,6 +15,7 @@ const Vistapropietario = () => {
 
   const [internalRoute, setIntervalRoute] = useState('ingresar-propiedad');
   const [PropiedadesContext, setPropiedadesContext] = useState('');
+  const [listaprop]  = ListarpropiedadesApi();
 
   const CrearPropiedad = (PropiedadporCrear) => {
     try {
@@ -28,14 +29,34 @@ const Vistapropietario = () => {
     }
   }
 
-  const ListadoPropiedades = () => {
+
+const PropiedadesView = () => {
+
+  const [propiedades, setPropiedades] = useState([]);
+
+  // PropiedadesContext
+
+  useEffect(() => {
+      const propiedades = ListarpropiedadesApi();
+      setPropiedades(propiedades);
+  }, []);
+
+  return (
+      <Vistapropublicada  propiedades/>
+  )
+};
+  
+ /* const ListadoPropiedades = () => {
     try {
-      const listaprop  = ListarpropiedadesApi();
+      const [listaprop]  = ListarpropiedadesApi();
+      console.log('listar propiedades')
+      console.log(ListarpropiedadesApi);
       alert('Datos Cargados')
+      
     } catch (error) {
         alert('Error al cargar los datos')
     }
-  }
+  }*/
 
   return (
     <>
@@ -66,12 +87,12 @@ const Vistapropietario = () => {
         )
         }
         {internalRoute === 'propiedades-publicadas' && (
-
-          <Row>
+            PropiedadesView()
+         /* <Row>
             <Col>
-              <Vistapropublicada onLoad={ListadoPropiedades} />
+              <Vistapropublicada onLoad={[listaprop]} />
             </Col>
-          </Row>
+          </Row>*/
         )
         }
         {internalRoute === 'propiedades-reservadas' && (

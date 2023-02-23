@@ -4,11 +4,17 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
+import Buscapropiedad from '../pages/Buscapropiedad';
 
 import alumno from '../assets/imgs/alumno.jpg';
 
-const Home = () => {
+import { useNavigate } from "react-router-dom";
 
+const Home = () => {
+    const navigate = useNavigate();
+    const irAVistaPropiedad = () => {
+        navigate(`/buscapropiedad`);
+    };
     return (
         <>
             <Container >
@@ -61,7 +67,7 @@ const Home = () => {
                                 <option value="3">3</option>
                             </Form.Select>
 
-                            <Button variant="outline-secondary" id="button-addon3">
+                            <Button onClick={ irAVistaPropiedad } variant="outline-secondary" id="button-addon3">
                                 Buscar
                             </Button>
                         </div>

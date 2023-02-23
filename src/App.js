@@ -10,10 +10,14 @@ import Vistaalumno from './pages/Vistaalumno';
 
 import PageLayoutpublico from './pages/PageLayoutpublico';
 
+import Context from "./context/Context";
+const { Provider } = Context;
+
 function App() {
   return (
     <div>
      { /* Utilizamos elcomponente */ }
+     <Provider>
      <BrowserRouter>         
           <Header />
           { /*<Navbarprin/>*/ }
@@ -23,13 +27,10 @@ function App() {
             <Route path="/registro" element={<Registro/>} />
             <Route path="/buscapropiedad" element={<Buscapropiedad/>} />
             <Route path="/vistapropietario/:id" element={<Vistapropietario/>} />
-            <Route path="/vistaalumno/:id" element={<Vistaalumno/>} />
-           
-            { /*<Route path="/pizza/:id" element={<VerPizza />} />>*/ }
-             { /*<Route path="/carrito" element={<Carrito />} />>*/ }
+            <Route path="/vistaalumno/:id" element={<Vistaalumno/>} />           
           </Routes>
       </BrowserRouter>
-      
+      </Provider>
     </div>
   );
 }

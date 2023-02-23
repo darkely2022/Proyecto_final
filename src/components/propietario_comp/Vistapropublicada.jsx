@@ -6,11 +6,15 @@ import { Table, Button } from 'react-bootstrap';
 
 const Vistapropublicada = (onLoad) => {
 
-    const data =  JSON.parse(JSON.stringify(onLoad))
-
+    const [data] = JSON.stringify(onLoad); // JSON.parse(JSON.stringify(onLoad))
+    //const data= []
+    console.log('data');
+    console.log(data);
+    console.log('Onload');
+    console.log(onLoad);
     return (
         <>
-            <Container fluid>
+            <Container >
                 <Row>
                     <Col>
                         <h2>Propiedades publicadas</h2>
@@ -31,17 +35,18 @@ const Vistapropublicada = (onLoad) => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {data.map((dato) => (
+                              
+                               {/* {data.map((dato) => (
 
-                                    <tr key={dato.nombrepropiedad}>
+                                   { <tr key={dato.nombrepropiedad}>
                                         <td>{dato.direccionpropiedad}</td>
                                         <td>{dato.comuna}</td>
                                         <td>{dato.numhabitacion}</td>
                                         <td>{dato.metrospropiedad}</td>
                                         <td>{dato.valorpropiedad}</td>
 
-                                    </tr>
-                                ))}
+                                </tr>
+                                ))}*/}
                             </tbody>
                         </Table>
                     </Col>
