@@ -1,13 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Regalumno = () => {
+const Regalumno = ({onSubmit}) => {
      
-    const [idvistaalumno, setIdvistaalumno] = useState("1");
+    const [idvistaalumno, setIdvistaalumno] = useState('');
     const navigate = useNavigate();
-    const irAVistaalumno = () => {
-        navigate(`/vistaalumno/${idvistaalumno}`);
-    };
 
     const [nombre, setNombre] = useState('');
     const [apellido, setApellido] = useState('');
@@ -15,12 +12,14 @@ const Regalumno = () => {
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
     const [comuna, setComuna] = useState('');
+    const [direccion, setDireccion]=useState('');
 
     const [rutApoderado, setRutApoderado] = useState('');
     const [nombreApoderado, setNombreApoderado] = useState('');
     const [apellidoApoderado, setApellidoApoderado] = useState('');
     const [emailApoderado, setEmailApoderado] = useState('');
     const [comunaApoderado, setComunaApoderado] = useState('');
+    const [direccionApoderado, setDireccionApoderado]=useState('');
     const [relacion, setRelacion]=useState('');
 
     //Estado para los errores
@@ -28,14 +27,50 @@ const Regalumno = () => {
     
     const validarDatos = (e) => {
         e.preventDefault();
+        
         //Validación;
-        if (nombre === '' || apellido === '' || rut === '' || email === '' || password === '')
+        if (nombre === '' || apellido === '' || rut === '' || email === '' || password === '' || comuna === '')
         {
             setError(true);
+            alert('Falta completar datos del Estudiante')
             return;
         }
+        if (nombreApoderado === '' || apellidoApoderado === '' || rutApoderado === '' || emailApoderado === '' || direccionApoderado === ''  || comunaApoderado === '' || relacion === '')
+        {
+            setError(true);
+            alert('Falta completar datos del Apoderado')
+            return;
+        }
+        onSubmit({
+            rut: rut,
+            nombre:nombre,           
+            apellido:apellido,
+            direccion: direccion,
+            correo: email,
+            password: password,
+            comuna: comuna,
+            nombreApoderado:nombreApoderado,
+            apellidoApoderado: apellidoApoderado,
+            rutApoderado:rutApoderado,
+            direccionApoderado: direccionApoderado,
+            emailApoderado:emailApoderado,
+            comunaApoderado:comunaApoderado,
+            relacion:relacion
+        })
+
+        irAVistaalumno();
     };
-    
+
+    const irAVistaalumno = () => {
+        if (rut === '') 
+        { 
+            setError(true);
+            alert('Ingrese rut')
+            return;
+        }
+        navigate(`/vistaalumno/${rut}`);
+    };
+
     const actualizarDatos = (e) => {
         console.log('Escribiendo')
     }
@@ -95,6 +130,16 @@ const Regalumno = () => {
                     />
                 </div>
                 <div className="form-group">
+                    <label>Dirección</label>
+                    <input
+                        type="direccion"
+                        name="direccion"
+                        className="form-control"
+                        onChange={(e) => setDireccion(e.target.value)}
+                        value={direccion}
+                    />
+                </div>
+                <div className="form-group">
                     <label>Comuna</label>
                     <select
                         type="comuna"
@@ -151,6 +196,16 @@ const Regalumno = () => {
                     />
                 </div>
                 <div className="form-group">
+                    <label>Dirección</label>
+                    <input
+                        type="direccion"
+                        name="direccionApoderado"
+                        className="form-control"
+                        onChange={(e) => setDireccionApoderado(e.target.value)}
+                        value={direccionApoderado}
+                    />
+                </div>
+                <div className="form-group">
                     <label>Comuna Apoderado</label>
                     <select
                         type="comuna"
@@ -179,7 +234,7 @@ const Regalumno = () => {
                          <option value="4">Hermano(a)</option>
                     </select>
                 </div>
-                <button onClick={ irAVistaalumno } type="submit" className="btn btn-primary">
+                <button onClick={ validarDatos } type="submit" className="btn btn-primary">
                     Grabar
                 </button>
             </form>

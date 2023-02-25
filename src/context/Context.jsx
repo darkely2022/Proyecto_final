@@ -3,7 +3,8 @@ import { createContext, useState } from "react";
 const Context = createContext(null);
 
 function Provider({ children }) {
-  const [users, setUsers] = useState([]);
+  const [Alumnos, setAlumnos] = useState([]);
+  const [Propietarios, setPropietarios] = useState([])
   const [session, setSession] = useState(null);
 
   const [publicaciones, setPublicaciones] = useState([
@@ -17,8 +18,10 @@ function Provider({ children }) {
   ]);
 
   const state = {
-    users,
-    setUsers,
+    Alumnos,
+    setAlumnos,
+    Propietarios,
+    setPropietarios,
     session,
     setSession,
     publicaciones,

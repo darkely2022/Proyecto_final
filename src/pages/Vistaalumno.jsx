@@ -9,13 +9,19 @@ import Datosalumno from "../components/alumno_comp/Datosalumno";
 import Buscapropiedad from "./Buscapropiedad";
 import Reservaalumno from "../components/alumno_comp/Reservaalumno";
 
+
 const Vistaalumno = () => {
 
     const [internalRoute, setIntervalRoute] = useState('datos-alumno');
+   
+
     const navigate = useNavigate();
     const irAHome = () => {
         navigate(`/`);
     };
+
+   
+
     return (
     <>
         <Container fluid>

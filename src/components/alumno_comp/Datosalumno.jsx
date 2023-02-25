@@ -52,6 +52,7 @@ const Datosalumno = () => {
                                     type="text"
                                     name="nombreAlumno"
                                     className="form-control"
+                                    readOnly
                                     onChange={(e) => setNombreAlumno(e.target.value)}
                                     value={nombreAlumno}
                                 />
@@ -62,6 +63,7 @@ const Datosalumno = () => {
                                     type="text"
                                     name="apellidoAlumno"
                                     className="form-control"
+                                    readOnly
                                     onChange={(e) => setApellidoAlumno(e.target.value)}
                                     value={apellidoAlumno}
                                 />
@@ -72,6 +74,7 @@ const Datosalumno = () => {
                                     type="text"
                                     name="rutAlumno"
                                     className="form-control"
+                                    readOnly
                                     onChange={(e) => setRutAlumno(e.target.value)}
                                     value={rutAlumno}
                                 />
@@ -95,19 +98,6 @@ const Datosalumno = () => {
                                     onChange={(e) => setEmailAlumno(e.target.value)}
                                     value={emailAlumno}
                                 />
-                            </div>
-                            <div className="form-group">
-                                <label>Comuna</label>
-                                <select
-                                    type="comuna"
-                                    name="comunaAlumno"
-                                    className="form-control"
-                                    onChange={(e) => setComunaAlumno(e.target.value)}
-                                    value={comunaAlumno}>
-                                    <option value="1">Providencia</option>
-                                    <option value="2">Santiago</option>
-                                    <option value="3">Macul</option>
-                                </select>
                             </div>
                             <button onClick={ActualizarAlumno} type="submit" className="btn btn-primary">
                                 Modificar

@@ -7,12 +7,33 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import alumno from '../assets/imgs/alumno.jpg';
 import Regalumno from '../components/Regalumno';
 import Regpropietario from '../components/Regpropietario';
-import { useState } from "react";
+import { useState ,useContext} from "react";
+
+import { CrearAlumnoApi } from "../api/Apialumno";
+
+import ContextOrigin from "../context/Context";
+const { Context } = ContextOrigin;
 
 const Registro = () => {
 
-
     const [tipoPerfil, setTipoPerfil] = useState('');
+    const { setAlumnos, Alumnos } = useContext(Context);
+    const [AlumnoContext, setAlumnoContext] = useState('');
+
+    const CrearAlumno = (AlumnoporCrear) => {
+        try {
+          const AlumnoCreado = CrearAlumnoApi(AlumnoporCrear)
+          setAlumnoContext(AlumnoCreado);
+          setAlumnos([...Alumnos, AlumnoContext]);
+          console.log(Alumnos)
+          alert('Datos Grabados');
+        } catch (error) {
+          console.log(error)
+          alert('Datos no grabados, verificar completar todos los datos')
+          //setAlumnoContext(null);
+        }
+      }
+    
 
     return (
         <Container >
@@ -43,7 +64,7 @@ const Registro = () => {
                         <div>
                             <Row>
                                 <Col>
-                                    <Regalumno></Regalumno>
+                                    <Regalumno onSubmit={CrearAlumno}/>
                                 </Col>
                             </Row>
                         </div>
@@ -53,7 +74,7 @@ const Registro = () => {
                         <div>
                             <Row>
                                 <Col>
-                                    <Regpropietario></Regpropietario>
+                                    <Regpropietario/>
                                 </Col>
                             </Row>
                         </div>
