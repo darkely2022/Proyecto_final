@@ -6,6 +6,7 @@ function Provider({ children }) {
   const [Alumnos, setAlumnos] = useState([]);
   const [Propietarios, setPropietarios] = useState([])
   const [session, setSession] = useState(null);
+  const [sessionAlumnos, setSessionAlumnos] = useState(null);
 
   const [publicaciones, setPublicaciones] = useState([
     {
@@ -24,6 +25,8 @@ function Provider({ children }) {
     setPropietarios,
     session,
     setSession,
+    sessionAlumnos,
+    setSessionAlumnos,
     publicaciones,
     setPublicaciones
   };

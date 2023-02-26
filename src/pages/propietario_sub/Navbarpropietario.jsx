@@ -3,35 +3,38 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import ListGroup from 'react-bootstrap/ListGroup';
 
-const Navbarpropietario = ({setIntervalRoute}) => {
+const Navbarpropietario = ({ setIntervalRoute }) => {
     const alertClicked = () => {
         alert('You clicked the third ListGroupItem');
     };
 
-    return(
+    return (
         <>
-        <Container Fluid>
+            <Container Fluid>
                 <Row>
                     <Col xs={12}>
                         <ListGroup horizontal defaultActiveKey="#link1">
-                            <ListGroup.Item action href="#link1" onClick={()=>setIntervalRoute('ingresar-propiedad')}>
+                            <ListGroup.Item action href="#link1" onClick={() => setIntervalRoute('ingresar-propiedad')}>
                                 Publicar una propiedad
                             </ListGroup.Item>
-                           
-                            <ListGroup.Item action onClick={()=>setIntervalRoute('datos-propietario')}>
+
+                            <ListGroup.Item action onClick={() => setIntervalRoute('datos-propietario')}>
                                 Datos Personales
                             </ListGroup.Item>
-                            <ListGroup.Item action onClick={()=>setIntervalRoute('propiedades-publicadas')}>
+                            <ListGroup.Item action onClick={() => setIntervalRoute('propiedades-publicadas')}>
                                 Propiedades publicadas
                             </ListGroup.Item>
-                            <ListGroup.Item action onClick={()=>setIntervalRoute('propiedades-reservadas')}>
+                            <ListGroup.Item action onClick={() => setIntervalRoute('propiedades-reservadas')}>
                                 Propiedades reservadas
                             </ListGroup.Item>
                         </ListGroup>
+                        <ListGroup.Item action onClick={() => setIntervalRoute('home')}>
+                            Cerrar Sesion
+                        </ListGroup.Item>
                     </Col>
-                    
+
                 </Row>
-               
+
             </Container>
         </>
     )

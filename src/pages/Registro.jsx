@@ -7,7 +7,7 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import alumno from '../assets/imgs/alumno.jpg';
 import Regalumno from '../components/Regalumno';
 import Regpropietario from '../components/Regpropietario';
-import { useState ,useContext} from "react";
+import { useState, useContext } from "react";
 
 import { CrearAlumnoApi } from "../api/Apialumno";
 
@@ -17,23 +17,49 @@ const { Context } = ContextOrigin;
 const Registro = () => {
 
     const [tipoPerfil, setTipoPerfil] = useState('');
-    const { setAlumnos, Alumnos } = useContext(Context);
-    const [AlumnoContext, setAlumnoContext] = useState('');
+    const { setAlumnos , Alumnos} = useContext(Context);
+    const [user, setUser] = useState({});
+
+    const CrearAlumnoContex = (AlumnoporCrear) => {
+
+        const{rut,nombre,apellido,direccion,comuna,correo,rutApoderado,nombreApoderado,apellidoApoderado,direccionApoderado,comunaApoderado,mailApoderado,relacion}=AlumnoporCrear
+        const Estudiante = {
+
+            nombre: nombre,
+            rut: rut,
+            apellido: apellido,
+            direccion: direccion,
+            comuna: comuna,
+            correo: correo
+        }
+        setAlumnos([...Alumnos, Estudiante])
+       
+        console.log('Lista general de alumnos')
+        console.log(Alumnos)
+        console.log('Estudiante')
+        console.log(Estudiante);
+
+
+
+    }
+
 
     const CrearAlumno = (AlumnoporCrear) => {
         try {
-          const AlumnoCreado = CrearAlumnoApi(AlumnoporCrear)
-          setAlumnoContext(AlumnoCreado);
-          setAlumnos([...Alumnos, AlumnoContext]);
-          console.log(Alumnos)
-          alert('Datos Grabados');
+            const AlumnoCreado = CrearAlumnoApi(AlumnoporCrear)
+            CrearAlumnoContex(AlumnoporCrear)
+          //  const AlumnoCreado2 = CrearAlumnoContex(AlumnoporCrear)
+
+            
+
+            alert('Datos Grabados');
         } catch (error) {
-          console.log(error)
-          alert('Datos no grabados, verificar completar todos los datos')
-          //setAlumnoContext(null);
+            console.log(error)
+            alert('Datos no grabados, verificar completar todos los datos')
+            //setAlumnoContext(null);
         }
-      }
-    
+    }
+
 
     return (
         <Container >
@@ -64,7 +90,7 @@ const Registro = () => {
                         <div>
                             <Row>
                                 <Col>
-                                    <Regalumno onSubmit={CrearAlumno}/>
+                                    <Regalumno onSubmit={CrearAlumno} />
                                 </Col>
                             </Row>
                         </div>
@@ -74,7 +100,7 @@ const Registro = () => {
                         <div>
                             <Row>
                                 <Col>
-                                    <Regpropietario/>
+                                    <Regpropietario />
                                 </Col>
                             </Row>
                         </div>

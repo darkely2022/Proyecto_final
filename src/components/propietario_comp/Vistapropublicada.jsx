@@ -8,10 +8,10 @@ const Vistapropublicada = (onLoad) => {
 
     const [data] = JSON.stringify(onLoad); // JSON.parse(JSON.stringify(onLoad))
     //const data= []
-    console.log('data');
-    console.log(data);
-    console.log('Onload');
-    console.log(onLoad);
+   // console.log('data');
+   // console.log(data);
+   // console.log('Onload');
+   // console.log(onLoad);
     return (
         <>
             <Container >

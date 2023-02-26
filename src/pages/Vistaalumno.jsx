@@ -1,5 +1,7 @@
 import { useState , useEffect} from "react";
 import { useNavigate } from "react-router-dom";
+import { redirect } from "react-router-dom";
+
 import Navbaralumno from "./alumno_sub/Navbaralumno";
 
 import { Container } from "react-bootstrap";
@@ -18,13 +20,14 @@ const Vistaalumno = () => {
     const navigate = useNavigate();
     const irAHome = () => {
         navigate(`/`);
+        //return redirect("/");
     };
 
    
 
     return (
     <>
-        <Container fluid>
+        <Container fluid ="md">
         {/*{userContex_rol==='estudiante'
             (<Navbarpropietario/>)
           } */}

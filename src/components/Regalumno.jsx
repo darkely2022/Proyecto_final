@@ -71,10 +71,6 @@ const Regalumno = ({onSubmit}) => {
         navigate(`/vistaalumno/${rut}`);
     };
 
-    const actualizarDatos = (e) => {
-        console.log('Escribiendo')
-    }
-
     return (
         <>
             <form className="formulario" onSubmit={validarDatos}>
